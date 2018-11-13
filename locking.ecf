@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-15-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-15-0 http://www.eiffel.com/developers/xml/configuration-1-15-0.xsd" name="locking" uuid="758A73E4-BA05-C9BA-EDDA-00001442B0DF" readonly="false" library_target="locking">
+<system xmlns="http://www.eiffel.com/developers/xml/configuration-1-18-0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.eiffel.com/developers/xml/configuration-1-18-0 http://www.eiffel.com/developers/xml/configuration-1-18-0.xsd" name="locking" uuid="758A73E4-BA05-C9BA-EDDA-00001442B0DF" readonly="false" library_target="locking">
 	<description>locking implementation</description>
 	<target name="locking">
 		<root all_classes="true"/>
-		<option warning="true" void_safety="transitional" syntax="provisional">
+		<option warning="true" syntax="provisional" manifest_array_type="mismatch_warning">
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<setting name="console_application" value="true"/>
+		<capability>
+			<concurrency support="none" use="thread"/>
+			<void_safety support="transitional" use="transitional"/>
+		</capability>
 		<library name="base" location="$ISE_LIBRARY\library\base\base-safe.ecf"/>
-		<library name="framework" location="..\framework\framework.ecf"/>
+		<library name="framework" location="iron:framework:framework.ecf"/>
 		<library name="sqlite" location="$ISE_LIBRARY\unstable\library\persistency\database\sqlite3\sqlite-safe.ecf"/>
-		<library name="test_extension" location="..\test_extension\test_extension.ecf"/>
+		<library name="test_extension" location="iron:test_extension:test_extension.ecf"/>
 		<library name="uuid" location="$ISE_LIBRARY\library\uuid\uuid-safe.ecf"/>
 		<cluster name="locking" location=".\" recursive="true">
 			<file_rule>
@@ -35,7 +39,10 @@
 		<option profile="false">
 		</option>
 		<setting name="console_application" value="false"/>
-		<library name="randomizer" location="..\randomizer\randomizer.ecf"/>
+		<capability>
+			<concurrency support="none"/>
+		</capability>
+		<library name="randomizer" location="iron:randomizer:randomizer.ecf"/>
 		<library name="testing" location="$ISE_LIBRARY\library\testing\testing-safe.ecf"/>
 		<cluster name="tests" location=".\tests\" recursive="true"/>
 	</target>
